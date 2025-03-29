@@ -64,7 +64,7 @@ function getColorByCount(count) {
 function renderRegionCoverage() {
   if (regionLayer) map.removeLayer(regionLayer);
 
-  fetch('../data/regions.geojson')
+  fetch('regions.geojson')
     .then(res => res.json())
     .then(geojsonData => {
       regionLayer = L.geoJSON(geojsonData, {
