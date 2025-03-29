@@ -1,6 +1,6 @@
 async function fetchProducts(accessToken) {
     try {
-        const response = await fetch("http://localhost:5000/fetch-products", {
+        const response = await fetch("https://ray3-backend.onrender.com/fetch-products", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ accessToken })
@@ -21,7 +21,7 @@ async function fetchProducts(accessToken) {
 
 async function fetchProductInfo(accessToken, productIds) {
     try {
-        const response = await fetch("http://localhost:5000/fetch-product-info", {
+        const response = await fetch("https://ray3-backend.onrender.com/fetch-product-info", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ accessToken, productIds })
@@ -55,24 +55,23 @@ async function fetchProductInfo(accessToken, productIds) {
 const renderMissionCards = (missions) => {
     const container = document.getElementById("mission-list");
     if (!container) return;
-  
+
     container.innerHTML = missions.map(m => `
       <div class="mission-card" onclick="location.href='#';" style="cursor: pointer;">
         <h3>${m.name}</h3>
         <p>mission-start:  [example] </p> <p>mission-end:  [example]</p>
       </div>
     `).join('');
-  };
-
+};
 
 async function fetchMissionInfo(accessToken) {
     const loadingMessage = document.getElementById("loading-message");
     try {
-        // Show loading message
         if (loadingMessage) {
             loadingMessage.style.display = "block";
         }
-        const response = await fetch("http://localhost:5000/fetch-missions", {
+
+        const response = await fetch("https://ray3-backend.onrender.com/fetch-missions", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ accessToken })
@@ -87,9 +86,7 @@ async function fetchMissionInfo(accessToken) {
     }
 }
 
-
 // End of Mission Stuffs
-
 
 async function fetchAccessToken() {
     const urlencoded = new URLSearchParams();
@@ -113,7 +110,6 @@ async function fetchAccessToken() {
         if (result.access_token) {
             await fetchProducts(result.access_token);
             await fetchMissionInfo(result.access_token);
-
         }
     } catch (error) {
         console.error("Token fetch error:", error);
