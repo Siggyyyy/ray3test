@@ -1,0 +1,544 @@
+
+
+/* CSS Reset & Custom Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'sansationregular';
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'sansationregular';
+    src: url('../Assets/Font/Sansation/sansation_regular_macroman/Sansation-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sansationbold';
+    src: url('../Assets/Font/Sansation/sansation_bold_macroman/Sansation-Bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Navigation */
+.top-nav-container {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    background-color: #565757;
+}
+
+.create-box, .cuts-box {
+    padding: 28px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 3px;
+    text-shadow: #00000098 2px 2px 20px;
+}
+
+.create-box:hover, .cuts-box:hover {
+    background-color: #676b6bd5;
+}
+
+.logout-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 150px;
+    margin-left: auto;
+    margin-right: 1%;
+}
+
+.logout-box:hover {
+    background-color: #676b6bd5;
+}
+
+.logout-box a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 5px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 10px;
+    gap: 15px;
+}
+
+.geo-box, .more-box, .missions-box, .histogram-box > h1 {
+    color: white;
+}
+
+.item-1, .item-2, .item-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #363737;
+    transition: width 0.3s, margin 0.3s;
+}
+
+
+
+/* Collapsible Panels */
+.geo-more.collapsed, .missions-histogram.collapsed {
+    width: 0 !important;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.map {
+    flex-grow: 1;
+    transition: margin 0.5s;
+}
+
+.map.expanded-left {
+    margin-left: -100%;
+}
+
+.map.expanded-right {
+    margin-right: -100%;
+}
+
+/* Toggle Buttons */
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #EF0000;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10.8%;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.geo-more .toggle-btn {
+    right: 98%;
+}
+
+.missions-histogram .toggle-btn {
+    left: 98%;
+}
+
+.toggle-btn.active {
+    transform: rotate(180deg);
+}
+
+/* Boxes */
+.geo-box, .more-box, .missions-box, .histogram-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    cursor: default;
+}
+
+.more-stuff-box, .missions-stuff-box, .histogram-stuff-box {
+    height: 365px;
+    width: 36.25rem;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* Map */
+#map-container {
+    border-radius: 10px;
+    height: 98%;
+    width: 98%;
+    margin: auto;
+    z-index: 0;
+}
+
+.leaflet-control-geocoder {
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+}
+
+.leaflet-control-geocoder a {
+    border-bottom: none;
+}
+
+.leaflet-control-geocoder-form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.leaflet-control-geocoder-form input {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Login Page */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 60vw;
+    height: 350px;
+    background-color: #ffffff;
+    margin: auto;
+}
+
+input[type=text], input[type=password] {
+    width: 50vw;
+    padding: 20px 30px;
+    margin: 13px 0;
+    border: 1px solid #EF0000;
+    box-sizing: border-box;
+    color: #EF0000;
+}
+
+/* Buttons */
+.login-button {
+    background-color: #EF0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 28px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.login-button:hover {
+    opacity: 0.8;
+}
+
+.main-button {
+    background-color: #565757;
+    color: white;
+    padding: 60px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 25px;
+}
+
+.main-button:hover {
+    opacity: 0.8;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 580px;
+    height: 365px;
+    border: 2px solid white;
+    padding: 20px;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.top-buttons, .bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.main-button {
+    flex: 1;
+}
+
+/* Tables */
+#polygon-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#polygon-table tbody tr {
+    background-color: #555;
+}
+
+#polygon-table th {
+    background-color: #555;
+    color: grey;
+}
+
+#polygon-table th, #polygon-table td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Mission Container */
+#mission-list {
+    max-height: 500px; /* Adjust this value as needed */
+    overflow-y: auto;  /* Enables vertical scrolling */
+    border: 1px solid #ccc; /* Optional: adds a border to the container */
+    padding: 10px; /* Optional: adds some padding inside the container */
+  }
+
+/* Loading container style */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f3f3f3;
+    margin-top: 50px;
+  }
+  
+  /* Spinner styles */
+  .loader {
+    border: 8px solid #0d1a1d;  /* Light grey background */
+    border-top: 8px solid #FFA726;  /* Blue spinner color */
+    border-radius: 50%;
+    width: 40px;  /* Set size of the spinner */
+    height: 40px;  /* Set size of the spinner */
+    animation: spin 0.5s linear infinite;
+  }
+  
+  /* Spinner animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* === Leaflet Legend for Mission Overlap === */
+.legend {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #333;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  }
+  
+  .legend h4 {
+    margin: 0 0 5px;
+    font-size: 13px;
+    text-align: center;
+  }
+  
+  .legend-gradient {
+    width: 100px;
+    height: 10px;
+    background: linear-gradient(to right,
+      #d3d3d3,
+      #ffffcc,
+      #ffeda0,
+      #fed976,
+      #feb24c,
+      #fd8d3c,
+      #fc4e2a,
+      #e31a1c,
+      #bd0026,
+      #800026,
+      #4d0019);
+    border: 1px solid #999;
+    margin-bottom: 5px;
+  }
+  
+  .legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+  }
+  
+/* Media Queries */
+@media (max-width: 1239px) {
+    .card-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .geo-calc-box, .more-stuff-box, .missions-stuff-box, .histogram-stuff-box {
+        height: 22.8rem;
+        width: 16rem;
+    }
+
+    .button-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .top-buttons, .bottom-buttons {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+    }
+
+    .main-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        height: 80%;
+    }
+
+    .bottom-buttons {
+        width: 80%;
+    }
+
+    .login-box {
+        width: 70vw;
+    }
+
+    input[type=text], input[type=password] {
+        width: 60vw;
+    }
+}
+
+.mission-card {
+  background-color: #0d1a1d;
+  transition: background-color 0.3s ease;
+  color: white;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.mission-card:hover {
+    background-color: #0d1a1d50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+.mission-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  color: #FFA726;
+}
+
+.mission-card p {
+  margin: 4px 0;
+  font-size: 0.9em;
+}
+
+.histogram-stuff-box {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 10px;
+    }
+
+    .geo-calc-box, .more-stuff-box, .missions-stuff-box, .histogram-stuff-box {
+        width: 29rem;
+        height: 10rem;
+        margin: 10px auto;
+    }
+
+    .geo-box {
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    #map-container {
+        height: 40rem;
+        width: 100%;
+    }
+
+    .toggle-btn {
+        width: 0 !important;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .logout-box {
+        width: 25vw;
+    }
+
+    .login-box {
+        width: 80vw;
+    }
+
+    input[type=text], input[type=password] {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .geo-calc-box, .more-stuff-box, .missions-stuff-box, .histogram-stuff-box {
+        width: 20rem;
+        height: 10rem;
+        margin: 10px auto;
+    }
+
+    .logout-box {
+        width: 80vw;
+    }
+
+    .login-box {
+        width: 70vw;
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+    }
+}
