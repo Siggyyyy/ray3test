@@ -14,6 +14,11 @@ app.use('/scripts', express.static('C:/Users/sigam/Documents/Application/Scripts
 app.use('/data', express.static('C:/Users/sigam/Documents/Application/data'));  // Serving data folder (GeoJSON)
 
 // Route to fetch products
+
+app.get("/", (req, res) => {
+    res.send("Backend is live!");
+  });
+  
 app.post('/fetch-products', async (req, res) => {
     const { accessToken } = req.body;
 

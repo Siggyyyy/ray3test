@@ -137,8 +137,7 @@ function updatePolygonTable() {
       <td>${polygon.type}</td>
       <td>${polygon.area} km²</td>
       <td>${polygon.coverage}%</td>
-    </tr>`
-  ).join("");
+    </tr>`).join("");
 }
 
 // === Marker Clustering ===
@@ -209,7 +208,7 @@ async function fetchAccessToken() {
 
 async function fetchProducts(token) {
   try {
-    const res = await fetch("http://localhost:5000/fetch-products", {
+    const res = await fetch("https://ray3-backend.onrender.com/fetch-products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ accessToken: token })
@@ -225,7 +224,7 @@ async function fetchProducts(token) {
 
 async function fetchProductInfo(token, productIds) {
   try {
-    const res = await fetch("http://localhost:5000/fetch-product-info", {
+    const res = await fetch("https://ray3-backend.onrender.com/fetch-product-info", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ accessToken: token, productIds })
@@ -271,13 +270,11 @@ function addColorLegend() {
       <div class="legend-gradient"></div>
       <div class="legend-labels">
         <span>0</span>
-        
         <span>10+</span>
       </div>
     `;
     return div;
   };
-  
 
   legend.addTo(map);
 }
